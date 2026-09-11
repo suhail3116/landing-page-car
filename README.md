@@ -48,15 +48,21 @@ This repository houses the flagship web experience for the **VALENCE GT-ONE** (1
   - Active morphing rear aerodynamic diffuser and strakes
   - Megawatt Silicon-Carbide ultra-fast charging (10% to 80% in 11 minutes)
 
-### 5. 📊 Head-to-Head Benchmark Matrix (ComparisonMatrix.jsx)
+### 5. 🎬 Technical Aesthetic Parameters Film & Hero Motion Mode (TechnicalFilm.jsx & Hero.jsx)
+- **High-Tech Cinematic Reel**: 16:9 theater showcase featuring `/assets/videos/Technical_Aesthetic_Paramete.mp4` depicting computational fluid dynamics (CFD) and aerodynamic validation at 248 mph.
+- **Custom Telemetry HUD Overlay**: Real-time corner reticles, live timecode tracking (`00:04.28 / 00:10.01`), interactive seeking scrubber, audio un-mute toggle, and fullscreen mode.
+- **Hero Stills vs. Motion Toggle**: In the main Hero viewport, visitors can instantly switch between high-res studio stills and the active aerodynamic motion reel.
+- **Dynamic Parameter Spec Cards**: Three 3D tilt telemetry cards detailing the 0.198 $C_d$ drag coefficient, 80ms morphing strakes, and thermal air curtain braking channels.
+
+### 6. 📊 Head-to-Head Benchmark Matrix (ComparisonMatrix.jsx)
 - Direct side-by-side engineering comparison between **VALENCE GT-ONE**, **Lucid Air Sapphire**, **Rimac Nevera**, and **Tesla Roadster**.
 - Interactive category tabs: *Powertrain & Speed*, *Battery & Charging*, *Chassis & Aero*.
 
-### 6. 🌍 Global Experience Studios (GlobalStudios.jsx)
+### 7. 🌍 Global Experience Studios (GlobalStudios.jsx)
 - Showroom showcase spanning Zurich, Silicon Valley, Tokyo, and London Mayfair.
 - VIP private test drive reservation scheduling with instant date and venue selection.
 
-### 7. 📜 VIP Allocation & Reservation Modal (ReservationModal.jsx)
+### 8. 📜 VIP Allocation & Reservation Modal (ReservationModal.jsx)
 - 4-step allocation flow for the Founder's Edition (limited to 500 numbered chassis):
   1. Allocation Tier Selection (*Founder’s Edition*, *Signature GT*, *Apex Track Pack*)
   2. Owner Profile & Telemetry Delivery Address
@@ -90,35 +96,38 @@ This repository houses the flagship web experience for the **VALENCE GT-ONE** (1
 ├── README.md                    # Project documentation
 ├── public/
 │   └── assets/
-│       └── images/              # 16 High-resolution production hypercar renders
-│           ├── valence_mercury.jpg            # Front 3/4 - Liquid Mercury
-│           ├── valence_obsidian.jpg           # Front 3/4 - Cosmic Obsidian
-│           ├── valence_crimson.jpg            # Front 3/4 - Apex Crimson
-│           ├── valence_azure.jpg              # Front 3/4 - Cyber Azure
-│           ├── valence_emerald.jpg            # Front 3/4 - Emerald Nebula
-│           ├── valence_amber.jpg              # Front 3/4 - Solar Amber
-│           ├── valence_rear_mercury.jpg       # Rear Aero - Liquid Mercury
-│           ├── valence_rear_obsidian.jpg      # Rear Aero - Cosmic Obsidian
-│           ├── valence_rear_crimson.jpg       # Rear Aero - Apex Crimson
-│           ├── valence_rear_azure.jpg         # Rear Aero - Cyber Azure
-│           ├── valence_rear_emerald.jpg       # Rear Aero - Emerald Nebula
-│           ├── valence_rear_amber.jpg         # Rear Aero - Solar Amber
-│           ├── valence_cockpit_alcantara.jpg  # Cockpit HUD - Obsidian Alcantara (Cyan)
-│           ├── valence_cockpit_leather.jpg    # Cockpit HUD - Arctic Nappa (Gold)
-│           ├── valence_cockpit_carbon.jpg     # Cockpit HUD - Matte Carbon (Crimson)
-│           └── valence_chassis.jpg            # Solid-State Skateboard Platform
+│       ├── images/              # 16 High-resolution production hypercar renders
+│       │   ├── valence_mercury.jpg            # Front 3/4 - Liquid Mercury
+│       │   ├── valence_obsidian.jpg           # Front 3/4 - Cosmic Obsidian
+│       │   ├── valence_crimson.jpg            # Front 3/4 - Apex Crimson
+│       │   ├── valence_azure.jpg              # Front 3/4 - Cyber Azure
+│       │   ├── valence_emerald.jpg            # Front 3/4 - Emerald Nebula
+│       │   ├── valence_amber.jpg              # Front 3/4 - Solar Amber
+│       │   ├── valence_rear_mercury.jpg       # Rear Aero - Liquid Mercury
+│       │   ├── valence_rear_obsidian.jpg      # Rear Aero - Cosmic Obsidian
+│       │   ├── valence_rear_crimson.jpg       # Rear Aero - Apex Crimson
+│       │   ├── valence_rear_azure.jpg         # Rear Aero - Cyber Azure
+│       │   ├── valence_rear_emerald.jpg       # Rear Aero - Emerald Nebula
+│       │   ├── valence_rear_amber.jpg         # Rear Aero - Solar Amber
+│       │   ├── valence_cockpit_alcantara.jpg  # Cockpit HUD - Obsidian Alcantara (Cyan)
+│       │   ├── valence_cockpit_leather.jpg    # Cockpit HUD - Arctic Nappa (Gold)
+│       │   ├── valence_cockpit_carbon.jpg     # Cockpit HUD - Matte Carbon (Crimson)
+│       │   └── valence_chassis.jpg            # Solid-State Skateboard Platform
+│       └── videos/              # Aerodynamic CFD and wind tunnel simulation videos
+│           └── Technical_Aesthetic_Paramete.mp4 # 1080p 60fps kinetic motion film
 └── src/
     ├── main.jsx                 # React DOM root mounting
     ├── App.jsx                  # Main application orchestrator & section layout
     ├── index.css                # Master luxury dark theme design tokens & component styles
     ├── components/
     │   ├── Header.jsx           # Glassmorphic header with audio toggle & mobile navigation
-    │   ├── Hero.jsx             # Hero viewport with interactive 3D telemetry chips
+    │   ├── Hero.jsx             # Hero viewport with photo/video switcher & 3D telemetry
     │   ├── Manifesto.jsx        # Company vision and 3 engineering pillars
     │   ├── StudioConfigurator.jsx# 360° visual configurator with live theme switching
     │   ├── AcousticSynth.jsx    # Web Audio API motor sound synthesizer & oscilloscope
     │   ├── RangeSimulator.jsx   # Real-time physics range & efficiency calculator
     │   ├── TechnologyBento.jsx  # Interactive 3D bento grid of vehicle innovations
+    │   ├── TechnicalFilm.jsx    # Aerodynamic motion theater with HUD & spec cards
     │   ├── ComparisonMatrix.jsx # Competitive benchmark comparison table
     │   ├── InvestorsTimeline.jsx# Series A/B funding roadmap & investor partners
     │   ├── GlobalStudios.jsx    # Showroom locator & VIP private test drive booking

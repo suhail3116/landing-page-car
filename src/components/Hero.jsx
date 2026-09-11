@@ -14,6 +14,8 @@ const HERO_COLORS = [
 export default function Hero({ onOpenReservation, onTriggerSynthScroll }) {
   const [heroColor, setHeroColor] = useState(HERO_COLORS[0]);
   const [typedTitle, setTypedTitle] = useState('');
+  const [heroMode, setHeroMode] = useState('photo');
+  const [heroVideoMuted, setHeroVideoMuted] = useState(true);
 
   const titles = [
     '1,450 HP Tri-Motor Vectoring',
@@ -157,6 +159,24 @@ export default function Hero({ onOpenReservation, onTriggerSynthScroll }) {
             </svg>
             <span>Hear 1,450 HP Acoustic Synth</span>
           </motion.a>
+
+          <motion.button
+            whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 0.97 }}
+            type="button"
+            className="ghost-btn"
+            onClick={() => {
+              setHeroMode('video');
+              const stage = document.querySelector('.car-stage');
+              if (stage) stage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }}
+          >
+            <svg className="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <circle cx="12" cy="12" r="10" />
+              <polygon points="10 8 16 12 10 16 10 8" fill="currentColor" />
+            </svg>
+            <span>Watch Kinetic Reel (10s)</span>
+          </motion.button>
         </motion.div>
 
         {/* Hero Car Showcase with Floating 3D Tilt Telemetry Badges */}
@@ -167,40 +187,105 @@ export default function Hero({ onOpenReservation, onTriggerSynthScroll }) {
             transition={{ duration: 0.9, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
             className="car-stage"
           >
-            <motion.img
-              key={heroColor.key}
-              initial={{ opacity: 0.7, scale: 0.99 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.35, ease: 'easeOut' }}
-              src={heroColor.img}
-              alt={`VALENCE GT-ONE ${heroColor.name}`}
-              className="hero-car-img"
-              loading="eager"
-            />
-            <div
-              className="ambient-underglow"
-              style={{ background: `radial-gradient(ellipse at center, ${heroColor.glow} 0%, transparent 75%)` }}
-              aria-hidden="true"
-            />
-
-            {/* Quick Hero Finish Swatches */}
-            <div className="hero-color-bar">
-              <span className="hero-color-label">{heroColor.name}</span>
-              <div className="hero-color-pills">
-                {HERO_COLORS.map(c => (
-                  <motion.button
-                    key={c.key}
-                    whileHover={{ scale: 1.25 }}
-                    whileTap={{ scale: 0.9 }}
-                    className={`hero-color-pill ${heroColor.key === c.key ? 'active' : ''}`}
-                    style={{ background: c.gradient }}
-                    onClick={() => setHeroColor(c)}
-                    title={c.name}
-                    aria-label={`Switch finish to ${c.name}`}
-                  />
-                ))}
-              </div>
+            {/* View Mode Toggle: Stills / Video */}
+            <div className="hero-mode-toggle">
+              <button
+                type="button"
+                className={`mode-btn ${heroMode === 'photo' ? 'active' : ''}`}
+                onClick={() => setHeroMode('photo')}
+              >
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
+                  <circle cx="8.5" cy="8.5" r="1.5" />
+                  <polyline points="21 15 16 10 5 21" />
+                </svg>
+                <span>Studio Stills</span>
+              </button>
+              <button
+                type="button"
+                className={`mode-btn ${heroMode === 'video' ? 'active' : ''}`}
+                onClick={() => setHeroMode('video')}
+              >
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <polygon points="5 3 19 12 5 21 5 3" fill="currentColor" />
+                </svg>
+                <span>Kinetic Aero Reel</span>
+                <span className="live-pill">HD</span>
+              </button>
             </div>
+
+            {heroMode === 'video' ? (
+              <div className="hero-video-box">
+                <video
+                  src="/assets/videos/Technical_Aesthetic_Paramete.mp4"
+                  autoPlay
+                  loop
+                  muted={heroVideoMuted}
+                  playsInline
+                  className="hero-car-video"
+                />
+                <div className="hero-video-hud">
+                  <div className="hud-badge-sm">WIND TUNNEL SIMULATION // 0.198 Cd</div>
+                  <button
+                    type="button"
+                    className="hero-video-mute-btn"
+                    onClick={() => setHeroVideoMuted(prev => !prev)}
+                    title={heroVideoMuted ? 'Unmute Audio' : 'Mute Audio'}
+                    aria-label={heroVideoMuted ? 'Unmute Audio' : 'Mute Audio'}
+                  >
+                    {heroVideoMuted ? (
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                        <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" fill="currentColor" />
+                        <line x1="23" y1="9" x2="17" y2="15" />
+                        <line x1="17" y1="9" x2="23" y2="15" />
+                      </svg>
+                    ) : (
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                        <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" fill="currentColor" />
+                        <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07" />
+                      </svg>
+                    )}
+                  </button>
+                </div>
+              </div>
+            ) : (
+              <>
+                <motion.img
+                  key={heroColor.key}
+                  initial={{ opacity: 0.7, scale: 0.99 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.35, ease: 'easeOut' }}
+                  src={heroColor.img}
+                  alt={`VALENCE GT-ONE ${heroColor.name}`}
+                  className="hero-car-img"
+                  loading="eager"
+                />
+                <div
+                  className="ambient-underglow"
+                  style={{ background: `radial-gradient(ellipse at center, ${heroColor.glow} 0%, transparent 75%)` }}
+                  aria-hidden="true"
+                />
+
+                {/* Quick Hero Finish Swatches */}
+                <div className="hero-color-bar">
+                  <span className="hero-color-label">{heroColor.name}</span>
+                  <div className="hero-color-pills">
+                    {HERO_COLORS.map(c => (
+                      <motion.button
+                        key={c.key}
+                        whileHover={{ scale: 1.25 }}
+                        whileTap={{ scale: 0.9 }}
+                        className={`hero-color-pill ${heroColor.key === c.key ? 'active' : ''}`}
+                        style={{ background: c.gradient }}
+                        onClick={() => setHeroColor(c)}
+                        title={c.name}
+                        aria-label={`Switch finish to ${c.name}`}
+                      />
+                    ))}
+                  </div>
+                </div>
+              </>
+            )}
           </motion.div>
 
           {/* Floating Telemetry Chips wrapped in 3D TiltCard */}

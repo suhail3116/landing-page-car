@@ -44,6 +44,7 @@ export default function Header({ isAudioActive, onToggleAudio, onOpenReservation
           <a href="#sound-lab" className="nav-link" onClick={handleNavClick}>Acoustics</a>
           <a href="#simulator" className="nav-link" onClick={handleNavClick}>Range &amp; Specs</a>
           <a href="#technology" className="nav-link" onClick={handleNavClick}>Engineering</a>
+          <a href="#aero-film" className="nav-link" onClick={handleNavClick}>Aero Film</a>
           <a href="#comparison" className="nav-link" onClick={handleNavClick}>Benchmark</a>
           <a href="#testdrive" className="nav-link" onClick={handleNavClick}>Studios</a>
         </nav>

@@ -8,6 +8,7 @@ import StudioConfigurator from './components/StudioConfigurator.jsx';
 import AcousticSynth from './components/AcousticSynth.jsx';
 import RangeSimulator from './components/RangeSimulator.jsx';
 import TechnologyBento from './components/TechnologyBento.jsx';
+import TechnicalFilm from './components/TechnicalFilm.jsx';
 import ComparisonMatrix from './components/ComparisonMatrix.jsx';
 import InvestorsTimeline from './components/InvestorsTimeline.jsx';
 import GlobalStudios from './components/GlobalStudios.jsx';
@@ -84,6 +85,9 @@ function LandingPage() {
 
         {/* 6. Bento Grid Technology Innovations */}
         <TechnologyBento />
+
+        {/* 6.5. Kinetic Aerodynamics Video Showcase */}
+        <TechnicalFilm />
 
         {/* 7. Head to Head Competitive Comparison */}
         <ComparisonMatrix />
